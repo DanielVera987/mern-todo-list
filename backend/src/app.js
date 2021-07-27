@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import { errors } from 'celebrate';
 import routes from './routes/index';
 import { handlerError, handlerError404 } from './middlewares/errors';
 
@@ -23,6 +24,7 @@ app.use('/v1', routes);
  * Errors
  */
 app.use(handlerError404);
+app.use(errors());
 app.use(handlerError);
 
 export default app;
