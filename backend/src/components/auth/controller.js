@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import daoAuth from './dao';
 
 const signToken = (data) =>
-  jwt.sign({ data }, process.env.TOKEN, {
+  jwt.sign({ email: data }, process.env.TOKEN, {
     expiresIn: 60 * 60 * 24 * 365,
   });
 

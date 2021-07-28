@@ -1,22 +1,31 @@
 import jwt from 'jsonwebtoken';
 import daoAuth from '../components/auth/dao';
 
-const isAuthenticaded = (req, res, next) => {
-  const token = req.headers.authorization;
+const isAuthenticaded = async (req, res, next) => {
+  let token;
 
-  if (!token) return res.status(401);
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
 
-  jwt.verify(token, process.env.TOKEN, async (err, decoded) => {
-    const { email } = decoded;
+  try {
+    if (!token) throw new Error('Not Authorization1');
+
+    const verify = await jwt.verify(token, process.env.TOKEN);
+
+    if (!verify) throw new Error('Not Authorization2');
+
+    const { email } = verify;
 
     const user = await daoAuth.getUserByEmail(email);
-    if (!user.empty) {
-      res.user = user;
-      next();
-    }
-  });
 
-  return false;
+    if (!user) throw new Error('Not Authorization3');
+
+    req.user = user;
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: err.message });
+  }
 };
 
 export default isAuthenticaded;
