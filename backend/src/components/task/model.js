@@ -2,14 +2,14 @@ import daoTask from './dao';
 
 const modelTask = {};
 
-modelTask.getTasks = () => daoTask.getTasks();
+modelTask.getTasks = (userId) => daoTask.getTasks(userId);
 
-modelTask.getTask = (id) => daoTask.getTask(id);
+modelTask.getTask = (userId, id) => daoTask.getTask(userId, id);
 
-modelTask.createTask = (data) => daoTask.createTask(data);
+modelTask.createTask = (userId, data) => daoTask.createTask(userId, data);
 
-modelTask.updateTask = (id, data) => daoTask.updateTask(id, data);
+modelTask.updateTask = (userId, id, data) => daoTask.updateTask(userId, id, data);
 
-modelTask.deleteTask = (id) => daoTask.deleteTask(id);
+modelTask.deleteTask = (userId, id) => daoTask.deleteTask(userId, id);
 
 export default modelTask;

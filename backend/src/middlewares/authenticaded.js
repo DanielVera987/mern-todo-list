@@ -17,9 +17,17 @@ const isAuthenticaded = async (req, res, next) => {
 
     const { email } = verify;
 
-    const user = await daoAuth.getUserByEmail(email);
+    let user = await daoAuth.getUserByEmail(email);
 
-    if (!user) throw new Error('Not Authorization3');
+    if (user.empty) throw new Error('Not Authorization3');
+
+    user.forEach((doc) => {
+      user = {
+        id: doc.id,
+        email: doc.data().email,
+        username: doc.data().username,
+      };
+    });
 
     req.user = user;
     next();

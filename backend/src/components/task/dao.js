@@ -2,8 +2,9 @@ import { db } from '../../services/firebase';
 
 const daoTask = {};
 
-daoTask.getTasks = async () => {
-  const res = await db.collection('tasks').get();
+daoTask.getTasks = async (userId) => {
+  let res = await db.collection('users').doc(userId).collection('tasks').get();
+
   const tasks = [];
 
   res.forEach((doc) => {
@@ -18,26 +19,32 @@ daoTask.getTasks = async () => {
   return tasks;
 };
 
-daoTask.getTask = async (id) => {
-  const task = await db.collection('tasks').doc(id).get();
+daoTask.getTask = async (userId, id) => {
+  const task = await db.collection('users').doc(userId).collection('tasks').doc(id).get();
   if (!task.exists) {
     return false;
   }
   return task.data();
 };
 
-daoTask.createTask = async (data) => {
-  const newTask = await db.collection('tasks').doc().set(data);
+daoTask.createTask = async (userId, data) => {
+  const newTask = await db.collection('users').doc(userId).collection('tasks').doc().set(data);
   return newTask;
 };
 
-daoTask.updateTask = async (id, data) => {
-  const updateTask = await db.collection('tasks').doc(id).update(data);
+daoTask.updateTask = async (userId, id, data) => {
+  const isExist = await daoTask.getTask(userId, id);
+  if (!isExist) return false;
+
+  const updateTask = await db.collection('users').doc(userId).collection('tasks').doc(id).update(data);
   return updateTask;
 };
 
-daoTask.deleteTask = async (id) => {
-  await db.collection('tasks').doc(id).delete();
+daoTask.deleteTask = async (userId, id) => {
+  const isExist = await daoTask.getTask(userId, id);
+  if (!isExist) return false;
+
+  await db.collection('users').doc(userId).collection('tasks').doc(id).delete();
 };
 
 export default daoTask;

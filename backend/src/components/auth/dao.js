@@ -8,8 +8,10 @@ daoAuth.registerUser = async (userObject) => {
 };
 
 daoAuth.getUserByEmail = async (email) => {
-  const user = await db.collection('users').where('email', '==', email).get();
-  return user;
+  let res = db.collection('users');
+  res = await res.where('email', '==', email).get();
+
+  return res;
 };
 
 export default daoAuth;
