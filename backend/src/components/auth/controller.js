@@ -60,7 +60,13 @@ controllerAuth.login = async (req, res) => {
 
   if (user.password === encryptedPassword) {
     const token = signToken(user.email);
-    res.json({ token });
+    res.json({
+      token,
+      user: {
+        email: user.email,
+        username: user.username,
+      },
+    });
     return;
   }
 
