@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Form from "./Form";
 import List from "./List";
 import Login from "../Login";
 import AuthContext from "../../context/AuthContext";
+import tasks from "../../services/Tasks";
 
-const Index = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+const Index = ({ tasksData }) => {
+  const { isAuthenticated, token } = useContext(AuthContext);
 
   return (
     <div>
@@ -23,10 +24,9 @@ const Index = () => {
                     <Form />
 
                     <ul className="list-group mb-0">
-                      <List />
-                      <List />
-                      <List />
-                      <List />
+                      {tasksData.length > 0
+                        ? tasksData.map((el) => <List />)
+                        : "No hay tareas"}
                     </ul>
                   </div>
                 </div>

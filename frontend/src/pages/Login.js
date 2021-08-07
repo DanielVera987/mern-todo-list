@@ -8,7 +8,7 @@ const initialForm = {
 };
 
 const Login = () => {
-  const { isAuthenticated, signUp, token } = useContext(AuthContext);
+  const { signUp } = useContext(AuthContext);
   const [form, setForm] = useState(initialForm);
 
   const handleChange = (e) => {
