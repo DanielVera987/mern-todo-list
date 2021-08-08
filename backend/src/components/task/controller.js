@@ -39,7 +39,6 @@ controllerTask.updateTask = async (req, res) => {
 
   const isUpdate = await modelTask.updateTask(req.user.id, id, data);
 
-  if (!isUpdate) return res.status(404).json({});
   return res.json({ data });
 };
 
@@ -47,7 +46,6 @@ controllerTask.delete = async (req, res) => {
   const { id } = req.params;
 
   const isDelete = await modelTask.deleteTask(req.user.id, id);
-  if (!isDelete) return res.status(404).json({});
 
   return res.status(201).json({});
 };

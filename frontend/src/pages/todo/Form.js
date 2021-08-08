@@ -1,13 +1,18 @@
 import React from "react";
 
-const Form = () => {
+const Form = ({ handleNewTask, handleChange, form }) => {
   return (
     <>
-      <form className="d-flex justify-content-center align-items-start mb-2">
+      <form
+        className="d-flex justify-content-center align-items-start mb-2"
+        onSubmit={handleNewTask}
+      >
         <div className="form-outline flex-fill">
           <input
             type="text"
-            id="form1"
+            name="description"
+            onChange={handleChange}
+            value={form.description}
             className="form-control form-control-lg"
           />
           <label className="form-label" htmlFor="form1">

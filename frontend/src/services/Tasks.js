@@ -17,4 +17,42 @@ tasks.all = async (data) => {
   return resp;
 };
 
+tasks.create = async (data) => {
+  const options = {
+    body: data,
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer: ${localStorage.getItem("token")}`,
+    },
+  };
+
+  const resp = await api.post(`${url}/`, options);
+  return resp;
+};
+
+tasks.update = async (id, data) => {
+  const options = {
+    body: data,
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer: ${localStorage.getItem("token")}`,
+    },
+  };
+
+  const resp = await api.put(`${url}/${id}`, options);
+  return resp;
+};
+
+tasks.delete = async (id) => {
+  const options = {
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer: ${localStorage.getItem("token")}`,
+    },
+  };
+
+  const resp = await api.del(`${url}/${id}`, options);
+  return resp;
+};
+
 export default tasks;
