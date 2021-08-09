@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/bin/www.js",
+    "dev": "nodemon --exec babel-node src/bin/www.js",
     "build-server": "babel src --out-dir dist",
-    "server": "node dist/bin/www.js",
+    "start": "node dist/bin/www.js",
     "test": "jest",
     "lint": "eslint src/",
-    "lint-fix": "eslint src/ --fix"
+    "lint-fix": "eslint src/ --fix",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix clienttt && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
