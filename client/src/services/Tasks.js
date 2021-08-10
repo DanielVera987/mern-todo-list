@@ -13,7 +13,7 @@ tasks.all = async (data) => {
     },
   };
 
-  const resp = await api.get(`${url}/`, options);
+  const resp = await api.get(`${url}`, options);
   return resp;
 };
 
