@@ -1,16 +1,16 @@
 {
-  "name": "backend",
+  "name": "todo-list-mern",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/bin/www.js",
     "build-server": "babel src --out-dir dist",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "start": "node dist/bin/www.js",
     "test": "jest",
     "lint": "eslint src/",
-    "lint-fix": "eslint src/ --fix",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "lint-fix": "eslint src/ --fix"
   },
   "engines": {
     "node": "14.16.1"
