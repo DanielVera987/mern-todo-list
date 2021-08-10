@@ -4,9 +4,8 @@ const tasks = {};
 const url = '/v1/task';
 const api = helpHttp();
 
-tasks.all = async (data) => {
+tasks.all = async () => {
   const options = {
-    body: data,
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer: ${localStorage.getItem('token')}`,
