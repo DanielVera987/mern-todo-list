@@ -26,7 +26,7 @@ tasks.create = async (data) => {
     },
   };
 
-  const resp = await api.post(`${url}/`, options);
+  const resp = await api.post(`${url}`, options);
   return resp;
 };
 
