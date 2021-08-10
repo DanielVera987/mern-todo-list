@@ -1,9 +1,10 @@
+import '@babel/polyfill';
 import { db } from '../../services/firebase';
 
 const daoAuth = {};
 
-daoAuth.registerUser = async (userObject) => {
-  const user = await db.collection('users').doc().set(userObject);
+daoAuth.registerUser = async (obj) => {
+  const user = await db.collection('users').doc().set(obj);
   return user;
 };
 

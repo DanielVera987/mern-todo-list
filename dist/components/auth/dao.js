@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+require("@babel/polyfill");
+
 var _firebase = require("../../services/firebase");
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -14,14 +16,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var daoAuth = {};
 
 daoAuth.registerUser = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(userObject) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(obj) {
     var user;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _firebase.db.collection('users').doc().set(userObject);
+            return _firebase.db.collection('users').doc().set(obj);
 
           case 2:
             user = _context.sent;
