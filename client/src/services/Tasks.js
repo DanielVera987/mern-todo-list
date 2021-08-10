@@ -1,15 +1,15 @@
-import { helpHttp } from "../helpers/helpHttp";
+import { helpHttp } from '../helpers/helpHttp';
 
 const tasks = {};
-const url = "http://localhost:5000/v1/task";
+const url = '/v1/task';
 const api = helpHttp();
 
 tasks.all = async (data) => {
   const options = {
     body: data,
     headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer: ${localStorage.getItem("token")}`,
+      'content-type': 'application/json',
+      Authorization: `Bearer: ${localStorage.getItem('token')}`,
     },
   };
 
@@ -21,8 +21,8 @@ tasks.create = async (data) => {
   const options = {
     body: data,
     headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer: ${localStorage.getItem("token")}`,
+      'content-type': 'application/json',
+      Authorization: `Bearer: ${localStorage.getItem('token')}`,
     },
   };
 
@@ -34,8 +34,8 @@ tasks.update = async (id, data) => {
   const options = {
     body: data,
     headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer: ${localStorage.getItem("token")}`,
+      'content-type': 'application/json',
+      Authorization: `Bearer: ${localStorage.getItem('token')}`,
     },
   };
 
@@ -46,8 +46,8 @@ tasks.update = async (id, data) => {
 tasks.delete = async (id) => {
   const options = {
     headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer: ${localStorage.getItem("token")}`,
+      'content-type': 'application/json',
+      Authorization: `Bearer: ${localStorage.getItem('token')}`,
     },
   };
 
