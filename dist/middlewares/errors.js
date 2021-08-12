@@ -16,6 +16,7 @@ var handlerError404 = function handlerError404(req, res, next) {
 exports.handlerError404 = handlerError404;
 
 var handlerError = function handlerError(err, req, res, next) {
+  console.log(err);
   res.locals.message = err.message;
   res.locals.error = process.env.ENV === 'dev' ? err : {};
   res.status(err.status || 500);
