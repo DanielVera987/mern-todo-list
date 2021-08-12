@@ -5,6 +5,7 @@ export const handlerError404 = (req, res, next) => {
 };
 
 export const handlerError = (err, req, res, next) => {
+  console.log(err);
   res.locals.message = err.message;
   res.locals.error = process.env.ENV === 'dev' ? err : {};
 
