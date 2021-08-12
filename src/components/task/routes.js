@@ -6,7 +6,7 @@ import isAuthenticaded from '../../middlewares/authenticaded';
 
 const router = express.Router();
 
-router.get('/all', isAuthenticaded, controllerTask.getTasks);
+router.get('/all', [isAuthenticaded], controllerTask.getTasks);
 
 /*router.get(
   '/:id',
