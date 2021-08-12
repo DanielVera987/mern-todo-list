@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/all', isAuthenticaded, controllerTask.getTasks);
 
-router.get(
+/*router.get(
   '/:id',
   [
     isAuthenticaded,
@@ -19,7 +19,7 @@ router.get(
     }),
   ],
   controllerTask.getTask
-);
+);*/
 
 router.post(
   '/',
