@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _path = _interopRequireDefault(require("path"));
+
 var _express = _interopRequireDefault(require("express"));
 
 var _cors = _interopRequireDefault(require("cors"));
@@ -33,7 +35,7 @@ app.use(_express["default"].urlencoded({
 }));
 app.use(_express["default"]["static"]('client/build'));
 app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+  res.sendFile(_path["default"].resolve(__dirname, '../client', 'build', 'index.html'));
 });
 /**
  * Routes
