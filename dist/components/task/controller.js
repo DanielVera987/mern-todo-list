@@ -29,9 +29,9 @@ controllerTask.getTasks = /*#__PURE__*/function () {
 
           case 2:
             tasks = _context.sent;
-            res.json({
+            return _context.abrupt("return", res.json({
               data: tasks
-            });
+            }));
 
           case 4:
           case "end":

@@ -5,7 +5,7 @@ const controllerTask = {};
 
 controllerTask.getTasks = async (req, res) => {
   const tasks = await modelTask.getTasks(req.user.id);
-  res.json({ data: tasks });
+  return res.json({ data: tasks });
 };
 
 controllerTask.getTask = async (req, res) => {
