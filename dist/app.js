@@ -38,6 +38,10 @@ app.use(_express["default"].urlencoded({
  */
 
 app.use('/v1', _index["default"]);
+app.use(_express["default"]["static"]('client/build'));
+app.get('*', function (req, res) {
+  res.sendFile(_path["default"].resolve(__dirname, '../client', 'build', 'index.html'));
+});
 /**
  * Errors
  */
@@ -45,9 +49,5 @@ app.use('/v1', _index["default"]);
 app.use(_errors.handlerError404);
 app.use((0, _celebrate.errors)());
 app.use(_errors.handlerError);
-app.use(_express["default"]["static"]('client/build'));
-app.get('*', function (req, res) {
-  res.sendFile(_path["default"].resolve(__dirname, '../client', 'build', 'index.html'));
-});
 var _default = app;
 exports["default"] = _default;
