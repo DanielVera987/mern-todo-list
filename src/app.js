@@ -21,16 +21,16 @@ app.use(express.urlencoded({ extends: false }));
  */
 app.use('/v1', routes);
 
+app.use(express.static('client/build'));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+});
+
 /**
  * Errors
  */
 app.use(handlerError404);
 app.use(errors());
 app.use(handlerError);
-
-app.use(express.static('client/build'));
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
-});
 
 export default app;
